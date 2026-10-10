@@ -1,19 +1,32 @@
 class Solution {
 public:
+
+bool fun(unordered_map<char,int>have, unordered_map<char,int>need){
+    for(auto i: need){
+        char c=i.first;
+        int fneed=i.second;
+        int fhave=have[c];
+        if(fhave<fneed){
+            return false;
+        }
+        
+    }
+    return true;
+}
     bool canConstruct(string ransomNote, string magazine) {
+ 
+ unordered_map<char,int>have;
+ unordered_map<char,int>need;
 
-        int freq[26]={};
+ for(int i=0;i<ransomNote.size();i++){
+    need[ransomNote[i]]++;
 
-        for(char ch: magazine){
-            freq[ch-'a']++;
-        }
-        for(char ch:ransomNote){
-            if(freq[ch-'a']==0){
-                return false;
-            }
-            freq[ch-'a']--;
-        }
-        return true;
+   
+ }
+  for(int i=0;i<magazine.size();i++){
+        have[magazine[i]]++;
+    }
+ return fun(have,need);
         
     }
 };
