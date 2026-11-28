@@ -54,7 +54,6 @@ class Solution {
             remaining -= take * price;
         }
 
-        // Step 5: Buy cheapest items with remaining budget
         answer += remaining / minPrice;
 
         return (int) answer;
